@@ -1,0 +1,90 @@
+<ion-header>
+    <ion-buttons slot="start">
+        <ion-menu-button></ion-menu-button>
+      </ion-buttons>
+ 
+      <ion-label>Last Seen : {{afAuth.auth.currentUser.metadata.lastSignInTime | date : 'shortTime'}}</ion-label>
+
+</ion-header>
+
+<ion-content padding>
+  
+  <!-- <ion-button (click)="photo1()">Next</ion-button>
+<ion-button (click)="photo()">Take photo</ion-button>
+
+<ion-list *ngFor="let photo of photos">
+<ion-item>
+    <img src={{photo}} style="width: 200px; height: 150px;">  photos : any[];
+</ion-item>
+
+  </ion-list> -->
+<!-- <div class="message my-msg" >
+
+  <h4>{{tem.name}}</h4>
+  <p>{{tem.userID}}</p>
+  <p>blah blah text ... </p>
+  <p>{{tem.message}}</p>
+  <div class="time" text-right>
+    <br>
+    {{tem.time | date : 'short'}}
+  </div>
+</div> ../../../assets/pro.png-->
+  <ion-grid *ngIf="afAuth.auth.currentUser.uid" >
+    <ion-row *ngFor="let tem of temp | async">
+      <div *ngIf="tem.userID !== afAuth.auth.currentUser.uid">
+        <img src="../../../assets/pro.png" (click)="photo()" >
+      </div>
+      &nbsp;&nbsp;&nbsp;
+      <ion-label *ngIf="tem.userID !== afAuth.auth.currentUser.uid">{{tem.name}}</ion-label>
+      <div size="9" class="message other-msg" *ngIf="tem.userID !== afAuth.auth.currentUser.uid">
+        <!-- <h4><strong>{{tem.name}}</strong></h4>
+        <p><strong>{{tem.userID}}</strong></p>
+        <p>blah blah text ... </p> -->
+     
+       
+        
+        
+            
+        <p>{{tem.message}}
+     
+        <!-- <div class="time" text-right>
+          <br>
+          {{tem.time | date : 'short'}}
+        </div> -->
+      </div>
+      <!-- <ion-label>{{afAuth.auth.currentUser.metadata.lastSignInTime | date : 'shortTime'}}</ion-label> -->
+      <div offset="3" size="9" class="message my-msg" *ngIf="tem.userID === afAuth.auth.currentUser.uid" text-left>
+        <!-- <h4><strong>{{tem.name}}</strong></h4>
+        <p><strong>{{tem.userID}}</strong></p> -->
+        <p>{{tem.message}}</p>
+        <!-- <p>blah blah text ... </p>
+        <div class="time" text-right>
+          <br>
+          {{tem.time | date : 'short'}}
+        </div> -->
+      </div>
+
+    </ion-row>
+  </ion-grid>
+</ion-content>
+<ion-footer>
+  <ion-toolbar color="light">
+    <ion-row>
+        <ion-col size="2" >
+            <ion-icon name="videocam"></ion-icon>
+            <!-- <ion-icon name="camera" color="primary" (click)="sendEmj()"></ion-icon> -->
+          </ion-col>
+        
+      <ion-col size="8">
+       
+        <ion-textarea autosize maxRows="3" placeholder="Write a message..." [(ngModel)]="mess" class="msg-input">
+
+        </ion-textarea>
+      </ion-col>
+      <ion-col size="2" >
+          <ion-icon name="send" color="primary" (click)="sendMsg()" ></ion-icon>
+          
+      </ion-col>
+    </ion-row>
+  </ion-toolbar>
+</ion-footer>

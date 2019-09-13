@@ -1,0 +1,7 @@
+{
+  "name": "birthdayApp",
+  "integrations": {
+    "cordova": {}
+  },
+  "type": "angular"
+}

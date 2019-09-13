@@ -1,0 +1,29 @@
+<ion-header>
+  <ion-buttons slot="start">
+    <ion-menu-button></ion-menu-button>
+  </ion-buttons>
+    <ion-title>on-chat</ion-title>
+ 
+</ion-header>
+
+<ion-content>
+
+<ion-list *ngFor="let x of itemList | async" (click)="clicked(x)">
+    <ion-item >
+<ion-avatar item-left>
+    <img src="../../../assets/pro.png" (click)="photo()" >
+</ion-avatar>
+        <!-- {{x.name}} {{x.price}} {{x.type}} -->
+        <ion-item text-wrap lines="none">
+        {{x.name}}
+        </ion-item >
+        <ion-item text-wrap lines="none">
+          ${{x.status}}
+        </ion-item>
+        <ion-item lines="none">
+      Last Seen : {{afAuth.auth.currentUser.metadata.lastSignInTime | date : 'shortTime'}} 
+        </ion-item >
+        <ion-icon name="arrow-forward" item-right></ion-icon>
+      </ion-item>
+    </ion-list>
+</ion-content>

@@ -1,0 +1,81 @@
+.message{
+     padding:7px;
+    border-radius: 100px;
+    margin-bottom: 4px;
+    
+    white-space: pre-wrap;
+}
+
+img{
+  //  border: 3px solid #BADA55;
+    border-radius: 90%;
+    width:50px
+
+}
+ .other-msg{
+//    // background: var(--ion-color-secondary-tint);
+//    // color:#fff;
+     position: relative;
+     border: 1px solid rgba(9, 10, 3, 0.205);
+//     margin: 20px 5px 0px;
+//     max-width: 80%;
+ align-self: flex-start;
+// padding: 6px 10px 7px;
+// border-radius: 15px 15px 15px 0px;
+// background: rgb(117, 221, 108);
+ font-size:  1px solid black;
+// line-height: 1.4;
+
+background:#fff;;
+ }
+ ion-label{
+    position: absolute;
+    top: 5px;
+    left: 95px;
+    font-size: small;
+    color: rgba(9, 10, 3, 0.377);
+}
+ .my-msg{
+//    // background: var(--ion-color-medium);
+//     // color:#fff;
+     position: absolute;
+     margin: 10px 5px 0px;
+//     max-width: 80%;
+right: 10px;
+// padding: 6px 10px 7px;
+// border-radius:15px 15px 0px;
+ background:#dfdfdf;
+ font-size: 1px solid black;
+// line-height: 1.4;
+
+ }
+.time{
+    color: black;
+    //float: right;
+    font-size: small;
+
+}
+.msg-input{
+    width: 100%;
+    border :1px solid var(--ion-color-medium);
+    border-radius:10px;
+    background: #fff;
+    resize: none;
+    padding-left: 10px;
+    padding-right: 10px;
+}
+.msg-button{
+    --padding-start: 0.5em;
+    --padding-end: 0.5em;
+}
+ion-icon{
+    zoom: 2.00;
+    right: 10px;
+    position: absolute;
+    bottom: 11px;
+    align-content: center;
+}
+ion-textarea{
+
+    border: radius 100;
+}

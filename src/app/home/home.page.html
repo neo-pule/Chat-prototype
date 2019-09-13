@@ -1,0 +1,35 @@
+<ion-header>
+
+  
+  <ion-toolbar>
+      <ion-buttons slot="start">
+          <ion-menu-button></ion-menu-button>
+        </ion-buttons>
+    <ion-title>
+      Ionic Blank
+    </ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+
+
+  <p>hello</p>
+  <p>{{name}}</p>
+<ion-label>To :</ion-label>
+  <ion-input [(ngModel)]="obj.recepient"></ion-input>
+
+<ion-label>From :</ion-label>
+  <ion-input [(ngModel)]="obj.sender"></ion-input>
+
+<ion-label>Message :</ion-label>
+<ion-input [(ngModel)]="obj.message"></ion-input>
+<ion-button (click)="Gone()">Play</ion-button>
+<ion-button routerLink="/sign-in">page 1</ion-button>
+<ion-card *ngFor="let tem of temp">
+ <p>{{tem.message}}</p>
+
+
+</ion-card>
+<ion-button (click)="getData()">submit</ion-button>
+</ion-content>
