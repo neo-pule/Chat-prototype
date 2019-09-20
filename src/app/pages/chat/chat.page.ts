@@ -8,7 +8,7 @@ import { Content } from '@angular/compiler/src/render3/r3_ast';
 import { IonicConfig } from '@ionic/core';
 import { IonContent } from '@ionic/angular';
 import { async } from '@angular/core/testing';
-
+import {SocialSharing} from '@ionic-native/social-sharing/ngx';
 @Component({
   selector: 'app-chat',
   templateUrl: './chat.page.html',
@@ -23,7 +23,7 @@ export class ChatPage implements OnInit {
   temp1;
   authState;
 
-  constructor(private dog :AngularFirestore,private cam: Camera,private file :File,public afAuth :AngularFireAuth, private obj:ChatServiceService ) {
+  constructor(private share :SocialSharing,private dog :AngularFirestore,private cam: Camera,private file :File,public afAuth :AngularFireAuth, private obj:ChatServiceService ) {
     console.log(this.afAuth.auth.currentUser.uid)
  
     this.temp = this.dog.collection('ChatRoom', obj => obj.orderBy("time") ).valueChanges();
@@ -38,6 +38,7 @@ export class ChatPage implements OnInit {
 photos : any[];
 date = Date.now();
 mess : string;
+url="http://www.W3schools.co.za";
 writePost;
 user = this.afAuth.auth.currentUser;
 item = {
@@ -57,7 +58,17 @@ item = {
   get currentUser(): any {
     return this.authenticated ? this.authState : null;
   }
-
+  shareFB() {
+    this.share.shareViaFacebook(this.mess,null,this.url).then(() => {
+   
+      console.log("Shared successful")
+   
+    }).catch(e => {
+      console.log("Shared error")
+   })
+   
+    }
+   
 sendMsg(item){
   this.Content.scrollToBottom(200);
  //this.obj.addData(this.item);

@@ -4,10 +4,12 @@
       </ion-buttons>
  
       <ion-label>Last Seen : {{afAuth.auth.currentUser.metadata.lastSignInTime | date : 'shortTime'}}</ion-label>
-
+      <ion-icon name="videocam" class="video"></ion-icon>
+      <ion-icon name="call" class="phone"></ion-icon>
+      <ion-icon name="more" class="more"></ion-icon>
 </ion-header>
 
-<ion-content padding>
+<ion-content padding class="background">
   
   <!-- <ion-button (click)="photo1()">Next</ion-button>
 <ion-button (click)="photo()">Take photo</ion-button>
@@ -33,10 +35,11 @@
     <ion-row *ngFor="let tem of temp | async">
       <div *ngIf="tem.userID !== afAuth.auth.currentUser.uid">
         <img src="../../../assets/pro.png" (click)="photo()" >
+        
       </div>
       &nbsp;&nbsp;&nbsp;
       <ion-label *ngIf="tem.userID !== afAuth.auth.currentUser.uid">{{tem.name}}</ion-label>
-      <div size="9" class="message other-msg" *ngIf="tem.userID !== afAuth.auth.currentUser.uid">
+      <div size="9" class="message other-msg" *ngIf="tem.userID !== afAuth.auth.currentUser.uid" (click)="shareFB()">
         <!-- <h4><strong>{{tem.name}}</strong></h4>
         <p><strong>{{tem.userID}}</strong></p>
         <p>blah blah text ... </p> -->
@@ -53,7 +56,7 @@
         </div> -->
       </div>
       <!-- <ion-label>{{afAuth.auth.currentUser.metadata.lastSignInTime | date : 'shortTime'}}</ion-label> -->
-      <div offset="3" size="9" class="message my-msg" *ngIf="tem.userID === afAuth.auth.currentUser.uid" text-left>
+      <div offset="3" size="9" class="message my-msg" *ngIf="tem.userID === afAuth.auth.currentUser.uid" (click)="shareFB()" text-left>
         <!-- <h4><strong>{{tem.name}}</strong></h4>
         <p><strong>{{tem.userID}}</strong></p> -->
         <p>{{tem.message}}</p>
@@ -71,7 +74,8 @@
   <ion-toolbar color="light">
     <ion-row>
         <ion-col size="2" >
-            <ion-icon name="videocam"></ion-icon>
+            
+            <ion-icon name="mic"></ion-icon>
             <!-- <ion-icon name="camera" color="primary" (click)="sendEmj()"></ion-icon> -->
           </ion-col>
         

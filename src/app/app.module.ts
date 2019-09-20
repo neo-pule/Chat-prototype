@@ -20,8 +20,11 @@ import { AngularFireAuth } from '@angular/fire/auth';
 import { Camera } from '@ionic-native/camera/ngx';
 import { File } from '@ionic-native/file/ngx';
 import {AutosizeModule} from 'ngx-autosize';
-import { FileChooser } from '@ionic-native/file-chooser';
-import {CallNumber} from '@ionic-native/call-number'
+import {CallNumber} from '@ionic-native/call-number';
+import {SocialSharing} from '@ionic-native/social-sharing/ngx';
+
+
+
 const firebaseConfig = {
   apiKey: "AIzaSyBHSOM4RaqyWCag8QSlwouF01XXcv9G4bY",
   authDomain: "chatapp-d5db9.firebaseapp.com",
@@ -41,9 +44,10 @@ firebase.initializeApp(firebaseConfig);
     
      Camera,
      File,
-     
+     SocialSharing,
     SplashScreen,
     AngularFireAuth,
+   
     { provide: RouteReuseStrategy, useClass: IonicRouteStrategy }
     
     

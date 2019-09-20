@@ -7,6 +7,81 @@
     <ion-icon name="more" class="more"></ion-icon>
 </ion-header>
 
-<ion-content>
+<ion-content class="background">
+    <h5>user collection</h5>
+<p>{{name}}</p>
+<br>
+<p> temp {{temp}}</p>
+<ion-button (click)="shareFB()">start rec</ion-button>
+<ion-button (click)="startRec()">start rec</ion-button>
+<ion-button (click)="selectVid()">select vid</ion-button>
+<p>{{afAuth.auth.currentUser.uid}}</p>
+<h5>chat collection</h5>
+<p>{{mail}}</p>
+<p>{{listItem.length}}</p>
+<br>
+<p>{{uid}}</p>
+<br>
+<p>{{time | date : "shortTime"}}</p>
+<ion-grid *ngFor="let tem of listItem | async" >
+    <p>{{tem.length}}</p>
+    <ion-row >
+      <div *ngIf="tem.recipient === temp">
+        <img src="{{imgRef}}" (click)="photo()" >
+        
+      </div>
+      &nbsp;&nbsp;&nbsp;
+     
+      <div size="9" class="message other-msg" *ngIf="tem.userID == afAuth.auth.currentUser.uid && tem.recipient== temp" (click)="presentActionSheet(tem.message)">
 
+        <p>{{tem.message}}
+     
+        <!-- <div class="time" text-right>
+          <br>
+          {{tem.time | date : 'short'}}
+        </div> -->
+      </div>
+    </ion-row>
+    <ion-row>
+      <!-- <ion-label>{{afAuth.auth.currentUser.metadata.lastSignInTime | date : 'shortTime'}}</ion-label> -->
+      
+      
+      <div offset="3" size="9" class="message my-msg" *ngIf="tem.recipient == afAuth.auth.currentUser.uid && tem.userID == temp" (click)="shareFB()" text-left>
+
+        <p>{{tem.message}}</p>
+      
+        <!-- <div class="time" text-right>
+          <br>
+          {{tem.time | date : 'short'}}
+        </div> -->
+      </div>
+<!-- <ng-template #login>
+<p>hello</p>
+</ng-template> -->
+    </ion-row>
+  </ion-grid>
 </ion-content>
+<ion-footer>
+    <ion-toolbar color="light">
+      <ion-row>
+          <ion-col size="2" >
+              
+              <ion-icon name="mic"></ion-icon>
+              <!-- <ion-icon name="camera" color="primary" (click)="sendEmj()"></ion-icon> -->
+            </ion-col>
+          
+        <ion-col size="8">
+         
+          <ion-textarea autosize maxRows="3" placeholder="Write a message..." [(ngModel)]="mess" class="msg-input">
+  
+          </ion-textarea>
+          
+        </ion-col>
+       
+            <ion-icon name="attach" (click)="getPhoto()" ></ion-icon>
+            <ion-icon name="send" color="primary" (click)="sendMsg()" ></ion-icon>
+            
+        
+      </ion-row>
+    </ion-toolbar>
+  </ion-footer>

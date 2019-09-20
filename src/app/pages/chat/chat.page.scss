@@ -9,8 +9,12 @@
 img{
   //  border: 3px solid #BADA55;
     border-radius: 90%;
-    width:50px
+    width:50px;
+   
 
+}
+.background{
+    --background : url("../../../assets/public.png") no-repeat 0/100% 100% ;
 }
  .other-msg{
 //    // background: var(--ion-color-secondary-tint);
@@ -77,5 +81,20 @@ ion-icon{
 }
 ion-textarea{
 
-    border: radius 100;
+    border-radius: 50;
+}
+.more{
+    position: absolute;
+    right: 5px;
+   display: inline;
+}
+.phone{
+    position: absolute;
+    right: 25px;
+    display: inline;
+}
+.video{
+    position: absolute;
+    right: 50px;
+    display: inline;
 }

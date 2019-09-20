@@ -1,64 +1,99 @@
 
 <ion-content padding>
     <h2 text-center>Edit Profile</h2>
-    <br>
-    <img [src]="{{imgRef | async }}" style="width: 200px; height: 150px;" (click)="photo()" />
-<br>
-
-    <ion-list class="tab">
-
-        <ion-item>
-        <ion-icon name="person"></ion-icon>
-    <ion-label  postion="floating">
-        Username
-    </ion-label>
-    <ion-input [(ngModel)]="user.name" placeholder="This user name will be visible to other users in the App"></ion-input>
-    <ion-icon name="create"></ion-icon>
-</ion-item>
-
-
-<ion-item>
-                <ion-label postion="floating">
-                        <ion-icon name="call"></ion-icon>
-                    Phone Number 
-                </ion-label>
-                <ion-input [(ngModel)]="user.phone" placeholder="This contact is will visible to other users in the App"></ion-input>
-                <ion-icon name="create"></ion-icon>
-            </ion-item>
-
-            <ion-item>
-                    <ion-label postion="floating">
-                            <ion-icon name="information-circle-outline"></ion-icon>
-                        About
-                    </ion-label>
-                    <ion-input [(ngModel)]="user.about" placeholder="This Description about yourself,will be visible to other users in the App"></ion-input>
-                    <ion-icon name="create"></ion-icon>
-                </ion-item>
-                <ion-item>
-                        <ion-label postion="floating">
-                                <ion-icon name="information-circle-outline"></ion-icon>
-                            gender
-                        </ion-label>
-                        <ion-input [(ngModel)]="user.gender" placeholder="This Description about yourself,will be visible to other users in the App"></ion-input>
-                        <ion-icon name="create"></ion-icon>
-                    </ion-item>
-            </ion-list>
-
             <ion-button shape="round"  (click)="getPic()">open file</ion-button>
             <ion-button shape="round"  (click)="onUpload($event)">Update</ion-button>
-            
+    
 <ion-button shape="round"  (click)="getPhoto()">Upload</ion-button>
 
-<div class="form-group">
-    <h5>Seleccionar image:</h5>
+<div  *ngFor="let x of itemList | async">
+                <div class="one" *ngIf="afAuth.auth.currentUser.uid === x.uid">
+<img src="{{x.photoUrl}}" style="height: 200px; width: 150px;"  >
+
+<ion-icon class="cam" name="camera"  (click)="photo()" ></ion-icon>
+<div class="form-group" >
+
+    
     <input type="file" accept=".png, .jpg" (change)="onUpload($event)">
   </div>
-  <div class="progress">
-    <div [style.visibility]="(uploadPercent == 0) ? 'hidden' : 'visible'" class="progress-bar progress-bar-striped bg-success"
-      role="progressbar" [style.width]="(uploadPercent | async) +'%'">
 
-      <!-- <span class="progressText" *ngIf="urlImage | async">
-        Ok!!</span> -->
-    </div>
-  </div>
+  
+  <br>
+  <br>
+
+                
+  <ion-row>
+        <ion-col>
+                <ion-icon class="call"  name="person"></ion-icon>
+        </ion-col>
+            <ion-col class="label">
+            <ion-label  postion="floating"><strong>{{x.name}}</strong> </ion-label>
+            </ion-col>
+            <ion-col>
+                    <ion-icon class="arrow" (click)="presentAlertPrompt()" name="create"></ion-icon>
+            </ion-col>
+
+        </ion-row>
+     
+
+
+<ion-row>
+    <ion-col >
+      <ion-icon class="call"  name="call"></ion-icon>
+    </ion-col>
+<ion-col class="label">
+            <ion-label postion="floating">Phone Number{{x.phone}} </ion-label>  
+</ion-col>
+<ion-col>
+        <ion-icon class="arrow" (click)="presentAlertPrompt()" name="create"></ion-icon>
+</ion-col>
+</ion-row>
+
+
+        <ion-row>
+                <ion-col >
+                 
+                  <ion-icon class="call"  name="information-circle-outline"></ion-icon>
+                </ion-col>
+                <ion-col class="label">
+                        <ion-label postion="floating">About {{x.Bio}}</ion-label>  
+            </ion-col>
+            <ion-col>
+                    <ion-icon class="arrow" (click)="presentAlertPrompt()" name="create"></ion-icon>
+            </ion-col>
+            </ion-row>
+       
+            <ion-row>
+                    <ion-col >
+                     
+                      <ion-icon class="call" (click)="presentAlertPrompt()" name="information-circle-outline"></ion-icon>
+                    </ion-col>
+                    <ion-col class="label">
+                            <ion-label postion="floating">gender {{x.gender}} </ion-label>  
+                </ion-col>
+                <ion-col>
+                        <ion-icon class="arrow" (click)="presentAlertPrompt()" name="create"></ion-icon>
+                </ion-col>
+                </ion-row>
+          </div>
+</div>
+<ion-item>
+<ion-label>
+        Old Password
+</ion-label>
+<ion-input [(ngModel)]="oldPass">
+
+</ion-input>
+</ion-item>
+
+<ion-item>
+                <ion-label>
+                        New Password
+                </ion-label>
+                <ion-input [(ngModel)]="newPass">
+                
+                </ion-input>
+                </ion-item>
+                
+<ion-button shape="round" expand="full" (click)="getPhoto()">Upload</ion-button>
 </ion-content>

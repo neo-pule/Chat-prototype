@@ -16,7 +16,9 @@ email;
 pass;
 user:string;
 
-  constructor(private dog :AngularFirestore,public data :Router,public afAuth: AngularFireAuth) { }
+  constructor(private dog :AngularFirestore,public data :Router,public afAuth: AngularFireAuth) {
+    console.log(this.afAuth.auth.currentUser)
+   }
 
 
   chang(){
@@ -26,8 +28,8 @@ user:string;
  
   signUP(){
     this.afAuth.auth.createUserWithEmailAndPassword(this.email, this.pass).then(error => {
-      // Handle Errors here.
-      //var errorCode = error.code;  
+     
+      
         this.dog.collection('users').add({
    name : null,
    age : null,
@@ -36,15 +38,18 @@ user:string;
   
 }).then(function(ref) {
   console.log("document was written with ID : "+ ref);
+  this.data.navigateByUrl('/about/first-page/profile');
 }).catch(function(){
   console.log("error while processing ..")
+  console.log(error)
 });
-     // var errorMessage = error.message;
-     localStorage.setItem('userid', this.afAuth.auth.currentUser.uid);
+     // update  Profile
+  
      this.afAuth.auth.currentUser.updateProfile({
       displayName : this.user
+    
     }).then(err =>{
-      this.data.navigateByUrl("/about/first-page/");
+      this.data.navigateByUrl("/about/first-page/chat");
       console.log(err)
     }
     )

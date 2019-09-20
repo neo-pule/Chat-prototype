@@ -1,17 +1,19 @@
 <ion-header>
+  <ion-toolbar>
   <ion-buttons slot="start">
     <ion-menu-button></ion-menu-button>
   </ion-buttons>
     <ion-title>on-chat</ion-title>
- 
+  </ion-toolbar>
 </ion-header>
 
 <ion-content>
-
-<ion-list *ngFor="let x of itemList | async" (click)="clicked(x)">
-    <ion-item >
+<ion-searchbar palceholder="Search .."  [(ngModel)]="query" (input)="searchUser($event)"></ion-searchbar>
+<ion-list *ngFor="let x of itemList | async" (click)="clicked(x)" >
+  <div class="first" *ngIf="x.uid !== afAuth.auth.currentUser.uid"> 
+  <ion-item >
 <ion-avatar item-left>
-    <img src="../../../assets/pro.png" (click)="photo()" >
+    <img src="{{x.photoUrl}}" (click)="photo()" >
 </ion-avatar>
         <!-- {{x.name}} {{x.price}} {{x.type}} -->
         <ion-item text-wrap lines="none">
@@ -25,5 +27,6 @@
         </ion-item >
         <ion-icon name="arrow-forward" item-right></ion-icon>
       </ion-item>
+    </div>
     </ion-list>
 </ion-content>

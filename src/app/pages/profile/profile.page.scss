@@ -1,11 +1,39 @@
 img{
     border: 3px solid #BADA55;
-    border-radius: 5px 20px 5px;
-    width: 100px;
+    border-radius: 50%;
+   
     position: relative;
     left: 100px;
 }
 .tab{
     position: absolute;
+  
     bottom: 100px;
+}
+.form-group{
+    position: relative;
+    left :80px;
+}
+ion-icon{
+    zoom: 1.5;
+    padding-left : 15px;
+    padding-right: 15px;
+}
+
+.label{
+    position: absolute;
+    left: 90px;
+}
+.arrow{
+    position: absolute;
+    right: 10px;
+}
+.call{
+    position: relative;
+    left: 0px;
+}
+.cam{
+    position: absolute;
+    right: 75px;
+    top: 105px;
 }
